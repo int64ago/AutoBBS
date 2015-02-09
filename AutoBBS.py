@@ -53,7 +53,7 @@ class AutoBBS:
         self.__post(url, headers, data)
         url = self.domain.rootUrl()
         res = self.__get(url, headers)
-        if res[3].find('访问我的空间'):
+        if res[3].find('访问我的空间') != -1:
             print('Login OK!')
             self.__formhash = re.search(r'formhash=(\w+)', res[3]).groups()[0]
         else :
@@ -69,7 +69,7 @@ class AutoBBS:
         data = {'message': msg, 'posttime': Utils.getTime(),
                 'usesig': '0', 'subject': '', 'formhash': self.__formhash}
         res = self.__post(url, headers, data)
-        if res[3].find('成功'):
+        if res[3].find('成功') != -1:
             print('Reply OK!')
         else :
             print('Reply failed!')
@@ -83,7 +83,7 @@ class AutoBBS:
         res = self.__post(url, headers, data)
 '''
 from Domain import Domain
-domain = Domain(hostname = 'bbs.stuhome.net')
+domain = Domain(hostname = 'bbs.uestc.edu.cn')
 autobbs = AutoBBS(domain = domain, userName = '', passWord = '')
 autobbs.login()
 '''
