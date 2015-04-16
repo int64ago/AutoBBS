@@ -132,7 +132,11 @@ class ContSpider:
         res = res.replace('\r', '').replace('\n\n', '\n')
         soup = BeautifulSoup(res)
         subject = soup.find('h1', {'class': 'headline-title'}).getText().encode('utf8')
-        content = soup.find('div', {'class': 'content'}).getText()
+        content = ''
+        questions = soup.findAll('div', {'class': 'question'})
+        for question in questions:
+            content += '[b]' + question.find('h2', {'class': 'question-title'}).getText() + '[/b]\n'
+            content += question.find('div', {'class': 'content'}).getText() + '\n'
         h = HTMLParser.HTMLParser()
         content = h.unescape(content).encode('utf8')
         content = self.__replaceImgs(content)
