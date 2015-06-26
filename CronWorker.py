@@ -9,7 +9,7 @@ from Spider import UrlSpider, ContSpider
 
 hour = int(time.strftime('%H',time.localtime(time.time())))
 domain = Domain(hostname = 'bbs.uestc.edu.cn')
-autobbs = AutoBBS(domain = domain, userName = 'xxoo', passWord = 'ooxx')
+autobbs = AutoBBS(domain = domain, userName = '屮艸芔茻', passWord = 'deartiger')
 autobbs.login()
 path = '.'
 localdb = LocalDB(path + '/dbpath', 1000)
